@@ -19,12 +19,34 @@ $f3->route('GET /', function(){
 });
 
 //define a route for /order
-$f3->route('GET /order', function(){
+$f3->route('GET|POST /order', function($f3){
     //echo '<h1>THIS IS MY ORDER PAGE</h1>';
 
+    //check if the form has been posted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //get data from post
+        $pet = $_POST['pet'];
+        $color = $_POST['color'];
+
+        //save data in session
+        $f3->set('SESSION.pet', $pet);
+        $f3->set('SESSION.color', $color);
+
+        //route to summary page
+        $f3->reroute('summary');
+    }
     //render a view
     $view = new Template();
     echo $view->render('views/pet-order.html');
+});
+
+//define a route for summary
+$f3->route('GET /summary', function($f3){
+
+
+    //render a view
+    $view = new Template();
+    echo $view->render('views/order-summary.html');
 });
 
 //run fat-free

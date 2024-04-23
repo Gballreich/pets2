@@ -1,0 +1,13 @@
+{
+  "name" : "gballreich/328/pest2",
+  "authors" : [
+    {
+      "name" : "Garrett Ballreich",
+      "email" : "ballreich.garrett@student.greenriver.edu"
+    }
+  ],
+  "require" :
+  {
+    "bcosca/fatfree-core" : "dev-master"
+  }
+}
